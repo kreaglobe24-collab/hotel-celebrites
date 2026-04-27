@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maison Ouidah — Hôtel & Table d'exception · Ouidah, Bénin</title>
+<meta name="description" content="Maison Ouidah — Hôtel intimiste et table d'auteur au cœur d'Ouidah, terre de mémoire et de spiritualité du Bénin." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          sand:   "#E8DCC4",
+          bone:   "#F2EADB",
+          onyx:   "#161311",
+          coal:   "#2A2521",
+          terra:  "#A0502B",
+          gold:   "#B89559",
+          goldL:  "#D6B47A",
+          palm:   "#2D3A2A",
+          moss:   "#5A6E54",
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        },
+        letterSpacing: { tightest: "-0.04em", luxe: "0.32em" },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#F2EADB; color:#161311; font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; margin:0; overflow-x:hidden; }
+  ::selection { background: rgba(184,149,89,0.4); color:#161311; }
+  body::-webkit-scrollbar { width:8px; }
+  body::-webkit-scrollbar-track { background:#F2EADB; }
+  body::-webkit-scrollbar-thumb { background: rgba(42,37,33,.3); border-radius:9999px; }
+
+  .eyebrow { text-transform:uppercase; letter-spacing:.32em; font-size:.7rem; font-weight:500; color:#B89559; }
+  .grain { position:absolute; inset:0; pointer-events:none; opacity:.14; mix-blend-mode:overlay; z-index:1;
+    background-image:url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/></svg>"); }
+
+  /* Shimmer gold */
+  .shimmer-gold {
+    background:linear-gradient(110deg,#B89559 0%,#D6B47A 45%,#FFE9B8 50%,#D6B47A 55%,#B89559 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    animation: shimmer 3.5s linear infinite;
+  }
+  @keyframes shimmer { 0%{background-position:-200% 0;} 100%{background-position:200% 0;} }
+
+  /* Ken Burns hero */
+  @keyframes kenBurns {
+    0% { transform: scale(1.15) translate(2%, -1%); }
+    50% { transform: scale(1.22) translate(-2%, 1%); }
+    100% { transform: scale(1.15) translate(2%, -1%); }
+  }
+  .ken-burns { animation: kenBurns 24s ease-in-out infinite; will-change: transform; }
+
+  @keyframes glowDrift {
+    0%,100% { transform: translate(-12%, -8%) scale(1); opacity:.4; }
+    50%     { transform: translate(12%, 8%) scale(1.15); opacity:.65; }
+  }
+  .hero-glow { position:absolute; inset:-15%; background:radial-gradient(ellipse at center, rgba(184,149,89,.45), transparent 55%); animation: glowDrift 14s ease-in-out infinite; mix-blend-mode:screen; pointer-events:none; }
+
+  @keyframes slowPan { 0%{transform:scale(1.1) translate(0,0);} 100%{transform:scale(1.18) translate(-1%,-1%);} }
+  .slow-pan { animation: slowPan 30s ease-in-out infinite alternate; }
+
+  /* Section curtains */
+  .curtain { position:absolute; top:0; left:0; right:0; height:100px; pointer-events:none; z-index:2; }
+  .curtain.bone { background:linear-gradient(to bottom, rgba(242,234,219,1), transparent); }
+  .curtain.sand { background:linear-gradient(to bottom, rgba(232,220,196,1), transparent); }
+  .curtain.dark { background:linear-gradient(to bottom, rgba(22,19,17,1), transparent); }
+
+  /* Gold dividers */
+  .gold-divider { position:relative; height:1px; background: rgba(22,19,17,.08); }
+  .gold-divider::before { content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:8px; height:8px; border-radius:9999px; background:#B89559; opacity:0; transition: opacity .8s ease; }
+  .gold-divider::after { content:""; position:absolute; top:0; left:50%; height:1px; width:0; background:linear-gradient(90deg,transparent,#B89559,transparent); transform:translateX(-50%); transition: width 1.6s cubic-bezier(.22,1,.36,1); }
+  .gold-divider.in::after { width:60%; }
+  .gold-divider.in::before { opacity:1; }
+
+  /* Reveal */
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+  .reveal-in { opacity:1; transform:none; }
+  .reveal-stagger > * { opacity:0; transform:translateY(40px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+  .reveal-stagger.reveal-in > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+  .reveal-stagger.reveal-in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.12s; }
+  .reveal-stagger.reveal-in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.24s; }
+  .reveal-stagger.reveal-in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.36s; }
+
+  /* Word reveal */
+  .word-mask { display:inline-block; overflow:hidden; vertical-align:bottom; margin-right:.25em; }
+  .word-mask span { display:inline-block; transform:translateY(110%); transition: transform 1.2s cubic-bezier(.22,1,.36,1); }
+  .word-mask.is-in span { transform:none; }
+  .reveal-words .word-mask span { transform:translateY(110%); }
+  .reveal-words.reveal-in .word-mask span { transform:none; transition: transform 1.1s cubic-bezier(.22,1,.36,1); }
+  .reveal-words.reveal-in .word-mask:nth-child(2) span { transition-delay:.08s; }
+  .reveal-words.reveal-in .word-mask:nth-child(3) span { transition-delay:.16s; }
+  .reveal-words.reveal-in .word-mask:nth-child(4) span { transition-delay:.24s; }
+  .reveal-words.reveal-in .word-mask:nth-child(5) span { transition-delay:.32s; }
+  .reveal-words.reveal-in .word-mask:nth-child(6) span { transition-delay:.4s; }
+
+  /* Buttons */
+  .btn-gold { display:inline-flex; align-items:center; gap:.75rem; padding:1rem 2rem; border-radius:9999px; background:#B89559; color:#161311; font-weight:500; transition:all .5s ease; }
+  .btn-gold:hover { background:#D6B47A; box-shadow:0 24px 60px -18px rgba(184,149,89,.7); transform: translateY(-2px); }
+  .btn-ghost-light { display:inline-flex; align-items:center; gap:.75rem; padding:1rem 2rem; border-radius:9999px; border:1px solid rgba(242,234,219,.3); color:#F2EADB; transition:all .5s ease; }
+  .btn-ghost-light:hover { background:#F2EADB; color:#161311; }
+  .btn-outline-dark { display:inline-flex; align-items:center; gap:.75rem; padding:1rem 2rem; border-radius:9999px; border:1px solid rgba(22,19,17,.2); color:#161311; transition:all .5s ease; }
+  .btn-outline-dark:hover { background:#161311; color:#F2EADB; }
+
+  /* Nav */
+  .nav-blend { mix-blend-mode:difference; color:#F2EADB; }
+  nav.scrolled { background: rgba(242,234,219,.85); backdrop-filter: blur(20px); border-bottom:1px solid rgba(22,19,17,.06); }
+  nav.scrolled .nav-blend { mix-blend-mode:normal; color:#161311; }
+
+  /* Suite cards */
+  .suite { position:relative; overflow:hidden; border-radius:24px; aspect-ratio:5/6; background:#E8DCC4; isolation:isolate; }
+  .suite img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.22,1,.36,1); }
+  .suite:hover img { transform:scale(1.12); }
+  .suite .veil { position:absolute; inset:0; background:linear-gradient(to top, rgba(22,19,17,.95) 0%, rgba(22,19,17,.4) 50%, transparent 100%); transition:background .7s ease; }
+  .suite:hover .veil { background:linear-gradient(to top, rgba(22,19,17,.92) 0%, rgba(22,19,17,.55) 60%, rgba(22,19,17,.05) 100%); }
+  .suite-meta { max-height:0; opacity:0; overflow:hidden; transition: max-height .7s cubic-bezier(.22,1,.36,1), opacity .5s ease; }
+  .suite:hover .suite-meta { max-height:200px; opacity:1; }
+  .suite-line { position:absolute; bottom:0; left:0; height:1px; width:0; background:#B89559; transition:width .8s cubic-bezier(.22,1,.36,1); }
+  .suite:hover .suite-line { width:100%; }
+
+  /* Restaurant split */
+  .menu-item { display:grid; grid-template-columns: 1fr auto; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px dashed rgba(242,234,219,.18); transition: padding .4s ease; }
+  .menu-item:hover { padding-left: .75rem; }
+  .menu-item .name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; line-height: 1.2; color: #F2EADB; }
+  .menu-item .desc { font-size: .85rem; color: rgba(242,234,219,.6); margin-top: .25rem; }
+  .menu-item .price { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: #D6B47A; align-self: start; }
+
+  /* Experiences */
+  .exp { position:relative; overflow:hidden; border-radius:20px; isolation:isolate; }
+  .exp img { width:100%; height:100%; object-fit:cover; transition: transform 1.4s ease; }
+  .exp:hover img { transform: scale(1.08); }
+  .exp-veil { position:absolute; inset:0; background: linear-gradient(to top, rgba(22,19,17,.92), rgba(22,19,17,.2) 60%, transparent); }
+
+  /* Showcase track */
+  .showcase-track { display:flex; gap:1.5rem; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding-bottom:1rem; scroll-behavior:smooth; }
+  .showcase-track::-webkit-scrollbar { display:none; }
+  .showcase-card { flex: 0 0 calc(100vw - 6rem); max-width:480px; scroll-snap-align:center; aspect-ratio:4/5; border-radius:20px; overflow:hidden; position:relative; }
+  @media (min-width: 768px) { .showcase-card { flex-basis:380px; scroll-snap-align:start; } }
+  @media (min-width: 1024px) { .showcase-card { flex-basis:420px; } }
+  .showcase-card img { width:100%; height:100%; object-fit:cover; transition: transform 1.2s ease; }
+  .showcase-card:hover img { transform:scale(1.07); }
+  .showcase-nav { width:48px; height:48px; border-radius:9999px; background:rgba(22,19,17,.85); color:#F2EADB; display:flex; align-items:center; justify-content:center; backdrop-filter: blur(8px); border:1px solid rgba(242,234,219,.15); transition: all .4s ease; cursor:pointer; }
+  .showcase-nav:hover { background:#B89559; color:#161311; transform: scale(1.08); }
+  .showcase-nav:disabled { opacity:.3; cursor:not-allowed; }
+
+  /* Marquee */
+  .marquee { overflow:hidden; }
+  .marquee-track { display:flex; gap:4rem; animation: marquee 50s linear infinite; width:max-content; }
+  .marquee-track > * { flex-shrink:0; }
+  @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+  /* Form */
+  .field { background:transparent; border:none; border-bottom:1px solid rgba(242,234,219,.3); color:#F2EADB; padding:.75rem 0; outline:none; width:100%; transition:border-color .3s ease; font-family:inherit; font-size:1rem; }
+  .field:focus { border-bottom-color:#B89559; }
+  select.field option { background:#161311; }
+
+  /* Cursor glow */
+  .cursor-glow { pointer-events:none; position:fixed; width:520px; height:520px; border-radius:9999px; transform:translate(-50%,-50%); mix-blend-mode:soft-light; z-index:100; transition: opacity .5s; opacity:0;
+    background: radial-gradient(circle, rgba(184,149,89,.35) 0%, rgba(184,149,89,0) 60%); }
+  @media (max-width: 768px) { .cursor-glow { display:none; } }
+
+  /* Counter */
+  .counter-num { font-variant-numeric: tabular-nums; }
+
+  /* Mobile menu */
+  .mobile-menu { max-height:0; overflow:hidden; transition: max-height .5s cubic-bezier(.22,1,.36,1); }
+  .mobile-menu.open { max-height:600px; }
+
+  /* Floating CTA call */
+  .float-call { position:fixed; bottom:24px; right:24px; z-index:90; display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.4rem; border-radius:9999px; background:#161311; color:#F2EADB; font-weight:500; box-shadow: 0 16px 40px -12px rgba(0,0,0,.4); transition: all .4s ease; font-size:.875rem; }
+  .float-call:hover { background:#B89559; color:#161311; transform: translateY(-3px); }
+  .float-call .pulse { width:8px; height:8px; border-radius:9999px; background:#B89559; box-shadow: 0 0 0 0 rgba(184,149,89,.7); animation: pulse 2s infinite; }
+  .float-call:hover .pulse { background:#161311; box-shadow: 0 0 0 0 rgba(22,19,17,.7); }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(184,149,89,.6);} 70%{box-shadow:0 0 0 12px rgba(184,149,89,0);} 100%{box-shadow:0 0 0 0 rgba(184,149,89,0);} }
+</style>
+</head>
+<body>
+
+<div id="cursor-glow" class="cursor-glow"></div>
+
+<!-- FLOATING PHONE CTA -->
+<a href="tel:+22901000000" class="float-call"><span class="pulse"></span>+229 01 XX XX XX XX</a>
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-700" id="navbar">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="font-display text-3xl tracking-tightest nav-blend">Maison <em class="not-italic text-gold">Ouidah</em></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-10">
+      <a href="#hotel" class="text-sm nav-blend hover:!text-gold transition-colors duration-500 relative group">Hôtel<span class="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full"></span></a>
+      <a href="#restaurant" class="text-sm nav-blend hover:!text-gold transition-colors duration-500 relative group">Table<span class="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full"></span></a>
+      <a href="#experiences" class="text-sm nav-blend hover:!text-gold transition-colors duration-500 relative group">Expériences<span class="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full"></span></a>
+      <a href="#galerie" class="text-sm nav-blend hover:!text-gold transition-colors duration-500 relative group">Galerie<span class="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full"></span></a>
+      <a href="#contact" class="text-sm nav-blend hover:!text-gold transition-colors duration-500 relative group">Contact<span class="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full"></span></a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs tracking-luxe uppercase bg-gold text-onyx font-medium hover:bg-goldL transition-colors duration-500">Réserver</a>
+      <button id="menu-btn" class="lg:hidden p-2 nav-blend" aria-label="Menu">
+        <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu lg:hidden bg-bone border-t border-onyx/10">
+    <ul class="px-6 py-6 space-y-4">
+      <li><a href="#hotel" class="block font-display text-2xl text-onyx hover:text-gold transition-colors">Hôtel</a></li>
+      <li><a href="#restaurant" class="block font-display text-2xl text-onyx hover:text-gold transition-colors">Table</a></li>
+      <li><a href="#experiences" class="block font-display text-2xl text-onyx hover:text-gold transition-colors">Expériences</a></li>
+      <li><a href="#galerie" class="block font-display text-2xl text-onyx hover:text-gold transition-colors">Galerie</a></li>
+      <li><a href="#contact" class="block font-display text-2xl text-onyx hover:text-gold transition-colors">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative h-[100svh] min-h-[760px] w-full overflow-hidden bg-onyx text-bone">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=2400&q=85"
+         alt="Vue de Ouidah au crépuscule"
+         class="absolute inset-0 w-full h-full object-cover ken-burns" />
+  </div>
+  <div class="hero-glow"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-onyx/50 via-onyx/25 to-onyx/95 z-[2]"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-onyx/65 via-transparent to-transparent z-[2]"></div>
+  <div class="grain" style="z-index:3;"></div>
+
+  <div class="relative z-10 h-full flex flex-col justify-end pb-28 md:pb-36 px-6 lg:px-10 max-w-7xl mx-auto">
+    <div class="flex items-center gap-4 mb-8 reveal">
+      <div class="w-12 h-px bg-gold"></div>
+      <span class="eyebrow">Hôtel · Restaurant — Ouidah, Bénin</span>
+    </div>
+
+    <h1 class="font-display font-light leading-[0.9] tracking-tightest max-w-5xl"
+        style="font-size:clamp(3.5rem, 11vw, 10rem);">
+      <span class="word-mask" data-delay="0"><span>L'âme</span></span>
+      <span class="word-mask" data-delay="120"><span>du</span></span>
+      <span class="word-mask" data-delay="240"><span class="italic shimmer-gold">Bénin,</span></span><br />
+      <span class="word-mask" data-delay="380"><span>à</span></span>
+      <span class="word-mask" data-delay="500"><span>portée</span></span>
+      <span class="word-mask" data-delay="620"><span>de main.</span></span>
+    </h1>
+
+    <p class="mt-10 max-w-xl text-base md:text-lg text-bone/75 leading-relaxed reveal" style="transition-delay:1.4s;">
+      Une demeure intimiste face à l'Atlantique, une table d'auteur célébrant le terroir béninois — au cœur d'Ouidah, ville de mémoire, de spiritualité et d'art de vivre.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center gap-4 reveal" style="transition-delay:1.65s;">
+      <a href="#contact" class="btn-gold group">Réserver votre séjour
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 7 17 17 7 17"/></svg>
+      </a>
+      <a href="tel:+22901000000" class="btn-ghost-light">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Nous appeler
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 right-8 z-10 hidden md:flex flex-col items-center gap-2 text-bone/60">
+    <span class="text-[10px] tracking-luxe uppercase" style="writing-mode:vertical-rl;">Découvrir</span>
+    <div class="w-px h-16 bg-gradient-to-b from-gold via-bone/40 to-transparent animate-pulse"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee bg-onyx text-bone/40 py-6 border-y border-bone/5">
+  <div class="marquee-track text-sm tracking-luxe uppercase">
+    <span>Ouidah</span><span class="text-gold">✦</span>
+    <span>Patrimoine UNESCO</span><span class="text-gold">✦</span>
+    <span>Cuisine d'auteur</span><span class="text-gold">✦</span>
+    <span>Atlantique</span><span class="text-gold">✦</span>
+    <span>Vaudou</span><span class="text-gold">✦</span>
+    <span>Hospitalité béninoise</span><span class="text-gold">✦</span>
+    <span>Ouidah</span><span class="text-gold">✦</span>
+    <span>Patrimoine UNESCO</span><span class="text-gold">✦</span>
+    <span>Cuisine d'auteur</span><span class="text-gold">✦</span>
+    <span>Atlantique</span><span class="text-gold">✦</span>
+    <span>Vaudou</span><span class="text-gold">✦</span>
+    <span>Hospitalité béninoise</span><span class="text-gold">✦</span>
+  </div>
+</div>
+
+<!-- WELCOME / STORY -->
+<section id="histoire" class="relative py-32 md:py-44 bg-bone overflow-hidden">
+  <div class="curtain bone"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="lg:col-span-5 order-2 lg:order-1">
+      <span class="eyebrow reveal">— Bienvenue</span>
+      <h2 class="font-display text-5xl md:text-7xl tracking-tightest mt-6 leading-[1] reveal-words">
+        <span class="word-mask"><span>Une</span></span>
+        <span class="word-mask"><span>maison,</span></span><br />
+        <span class="word-mask"><span class="italic text-terra">une</span></span>
+        <span class="word-mask"><span class="italic text-terra">mémoire.</span></span>
+      </h2>
+      <p class="mt-8 text-lg text-coal/75 leading-relaxed reveal" style="transition-delay:.3s;">
+        Maison Ouidah s'est imposée, au fil des saisons, comme l'adresse confidentielle des voyageurs qui cherchent davantage qu'un séjour : une rencontre. Avec une terre, des visages, des goûts, des récits.
+      </p>
+      <p class="mt-6 text-coal/75 leading-relaxed reveal" style="transition-delay:.45s;">
+        Chaque suite, chaque assiette, chaque silence est pensé pour dire, à sa manière, ce que Ouidah a de plus précieux à offrir.
+      </p>
+      <a href="#hotel" class="btn-outline-dark mt-10 group reveal" style="transition-delay:.6s;">
+        Découvrir nos suites
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="lg:col-span-7 order-1 lg:order-2 reveal">
+      <div class="relative aspect-[4/5] rounded-3xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=85" alt="Patio Maison Ouidah" class="absolute inset-0 w-full h-full object-cover slow-pan" />
+        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between text-bone">
+          <div>
+            <div class="text-[10px] tracking-luxe uppercase text-goldL">Maison Ouidah</div>
+            <div class="font-display text-2xl mt-1 italic">depuis 2012</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="max-w-7xl mx-auto px-6 lg:px-10"><div class="gold-divider"></div></div>
+
+<!-- HOTEL — SUITES -->
+<section id="hotel" class="relative py-32 md:py-44 bg-sand overflow-hidden">
+  <div class="curtain sand"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-20">
+      <span class="eyebrow reveal">— L'hôtel</span>
+      <h2 class="font-display text-5xl md:text-7xl tracking-tightest mt-6 leading-[1] reveal-words">
+        <span class="word-mask"><span>Trois</span></span>
+        <span class="word-mask"><span>signatures,</span></span><br />
+        <span class="word-mask"><span class="italic text-terra">une</span></span>
+        <span class="word-mask"><span class="italic text-terra">même</span></span>
+        <span class="word-mask"><span class="italic text-terra">douceur.</span></span>
+      </h2>
+      <p class="mt-8 text-lg text-coal/70 max-w-xl reveal" style="transition-delay:.3s;">Onze chambres et suites, déclinées en trois ambiances. Toutes ouvertes sur la lumière, la végétation, et le souffle de l'Atlantique.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 reveal-stagger">
+      <article class="suite group">
+        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85" alt="Suite Atlantique" />
+        <div class="veil"></div>
+        <div class="absolute top-8 left-8 right-8 flex items-start justify-between text-bone z-10">
+          <div class="flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B89559" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10"/></svg>
+            <span class="text-[10px] tracking-luxe uppercase text-bone/70">Vue Océan</span>
+          </div>
+          <span class="font-display text-sm text-gold tracking-wider">(01)</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-bone z-10">
+          <h3 class="font-display text-3xl md:text-4xl leading-tight tracking-tight">Suite Atlantique</h3>
+          <div class="suite-meta">
+            <p class="mt-4 text-sm text-bone/85 max-w-md leading-relaxed">
+              52 m². Lit king-size, baignoire en pierre, terrasse privative face à l'océan. Petit-déjeuner servi en chambre.
+            </p>
+            <div class="mt-3 text-xs text-goldL tracking-luxe uppercase">À partir de 145 000 FCFA / nuit</div>
+          </div>
+          <div class="mt-6 flex items-center gap-3 text-gold">
+            <span class="text-xs tracking-luxe uppercase">Réserver</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </div>
+        <div class="suite-line"></div>
+      </article>
+
+      <article class="suite group">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85" alt="Chambre Patio" />
+        <div class="veil"></div>
+        <div class="absolute top-8 left-8 right-8 flex items-start justify-between text-bone z-10">
+          <div class="flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B89559" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 12l10 10 10-10z"/></svg>
+            <span class="text-[10px] tracking-luxe uppercase text-bone/70">Côté jardin</span>
+          </div>
+          <span class="font-display text-sm text-gold tracking-wider">(02)</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-bone z-10">
+          <h3 class="font-display text-3xl md:text-4xl leading-tight tracking-tight">Chambre Patio</h3>
+          <div class="suite-meta">
+            <p class="mt-4 text-sm text-bone/85 max-w-md leading-relaxed">
+              34 m². Lit queen-size, douche à l'italienne, ouverture directe sur le patio aux flamboyants.
+            </p>
+            <div class="mt-3 text-xs text-goldL tracking-luxe uppercase">À partir de 95 000 FCFA / nuit</div>
+          </div>
+          <div class="mt-6 flex items-center gap-3 text-gold">
+            <span class="text-xs tracking-luxe uppercase">Réserver</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </div>
+        <div class="suite-line"></div>
+      </article>
+
+      <article class="suite group">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=85" alt="Villa Manguier" />
+        <div class="veil"></div>
+        <div class="absolute top-8 left-8 right-8 flex items-start justify-between text-bone z-10">
+          <div class="flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B89559" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21V12h6v9"/></svg>
+            <span class="text-[10px] tracking-luxe uppercase text-bone/70">Villa privée</span>
+          </div>
+          <span class="font-display text-sm text-gold tracking-wider">(03)</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-bone z-10">
+          <h3 class="font-display text-3xl md:text-4xl leading-tight tracking-tight">Villa Manguier</h3>
+          <div class="suite-meta">
+            <p class="mt-4 text-sm text-bone/85 max-w-md leading-relaxed">
+              Deux chambres, salon ouvert, piscine privative à l'ombre du grand manguier. Pour familles ou couples en quête d'absolu.
+            </p>
+            <div class="mt-3 text-xs text-goldL tracking-luxe uppercase">À partir de 280 000 FCFA / nuit</div>
+          </div>
+          <div class="mt-6 flex items-center gap-3 text-gold">
+            <span class="text-xs tracking-luxe uppercase">Réserver</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </div>
+        <div class="suite-line"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="max-w-7xl mx-auto px-6 lg:px-10"><div class="gold-divider"></div></div>
+
+<!-- RESTAURANT -->
+<section id="restaurant" class="relative py-32 md:py-44 bg-onyx text-bone overflow-hidden">
+  <div class="curtain dark"></div>
+  <div class="absolute inset-0 opacity-15">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=85" alt="" class="w-full h-full object-cover slow-pan" />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-onyx via-onyx/70 to-onyx"></div>
+  <div class="grain"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+    <div class="lg:col-span-5">
+      <span class="eyebrow reveal">— La table</span>
+      <h2 class="font-display text-5xl md:text-7xl mt-6 leading-[1] tracking-tightest reveal-words">
+        <span class="word-mask"><span>Le</span></span>
+        <span class="word-mask"><span>Bénin</span></span>
+        <span class="word-mask"><span>dans</span></span><br />
+        <span class="word-mask"><span class="italic text-gold">l'assiette.</span></span>
+      </h2>
+      <p class="mt-8 text-lg text-bone/75 leading-relaxed max-w-md reveal" style="transition-delay:.3s;">
+        Notre cheffe puise dans les marchés de Ouidah, les pirogues du Mono et les vergers du Plateau. Une cuisine sincère qui dialogue avec la grande tradition africaine et l'écriture contemporaine.
+      </p>
+
+      <div class="mt-12 grid grid-cols-2 gap-6 reveal" style="transition-delay:.45s;">
+        <div>
+          <div class="text-[10px] tracking-luxe uppercase text-gold">Service midi</div>
+          <div class="font-display text-2xl mt-1">12h30 — 14h30</div>
+        </div>
+        <div>
+          <div class="text-[10px] tracking-luxe uppercase text-gold">Service soir</div>
+          <div class="font-display text-2xl mt-1">19h30 — 22h30</div>
+        </div>
+      </div>
+
+      <a href="#contact" class="btn-gold mt-10 group reveal" style="transition-delay:.6s;">Réserver une table
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 7 17 17 7 17"/></svg>
+      </a>
+    </div>
+
+    <div class="lg:col-span-7 reveal" style="transition-delay:.2s;">
+      <div class="text-[10px] tracking-luxe uppercase text-gold mb-6">— Sélection du chef</div>
+      <div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Carpaccio de thon de l'Atlantique</div>
+            <div class="desc">Citron vert, gnamakoudji, huile de palme rouge clarifiée</div>
+          </div>
+          <div class="price">8 500</div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Akassa fumé, sauce arachide</div>
+            <div class="desc">Pâte de maïs lactofermentée, jus court d'agouti</div>
+          </div>
+          <div class="price">7 000</div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Capitaine du Mono en croûte de fonio</div>
+            <div class="desc">Légumes-feuilles du jour, beurre noisette à l'attiéké</div>
+          </div>
+          <div class="price">12 500</div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Pintade rôtie au moyo de tomate</div>
+            <div class="desc">Igname pilée, pois d'angole confits, piment doux</div>
+          </div>
+          <div class="price">11 000</div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Mangue rôtie, sorbet bissap</div>
+            <div class="desc">Sablé au sésame noir, miel des Collines</div>
+          </div>
+          <div class="price">5 500</div>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-bone/40 tracking-wide">Prix en FCFA · Service compris</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences" class="relative py-32 md:py-44 bg-bone overflow-hidden">
+  <div class="curtain bone"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-20">
+      <span class="eyebrow reveal">— Expériences signature</span>
+      <h2 class="font-display text-5xl md:text-7xl mt-6 tracking-tightest leading-[1] reveal-words">
+        <span class="word-mask"><span>Vivre</span></span>
+        <span class="word-mask"><span class="italic text-terra">Ouidah,</span></span><br />
+        <span class="word-mask"><span>autrement.</span></span>
+      </h2>
+      <p class="mt-8 text-lg text-coal/70 max-w-xl reveal" style="transition-delay:.3s;">Au-delà du séjour, nous orchestrons des rencontres avec ceux qui font vivre la ville — historiens, prêtres vaudou, pêcheurs, artisans du textile.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+      <article class="exp aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1541704850-c83b3a6c0f0f?auto=format&fit=crop&w=1200&q=85" alt="Route des Esclaves" />
+        <div class="exp-veil"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 text-bone">
+          <div class="text-[10px] tracking-luxe uppercase text-gold mb-2">Mémoire</div>
+          <h3 class="font-display text-3xl">La Route des Esclaves</h3>
+          <p class="text-sm text-bone/75 mt-3 leading-relaxed">Visite guidée de la route historique jusqu'à la Porte du Non-Retour, accompagnée par un historien local.</p>
+        </div>
+      </article>
+      <article class="exp aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&q=85" alt="Vaudou" />
+        <div class="exp-veil"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 text-bone">
+          <div class="text-[10px] tracking-luxe uppercase text-gold mb-2">Spiritualité</div>
+          <h3 class="font-display text-3xl">Initiation au Vaudou</h3>
+          <p class="text-sm text-bone/75 mt-3 leading-relaxed">Rencontre avec un prêtre vaudou et accès privilégié au temple des Pythons et à la forêt sacrée de Kpassè.</p>
+        </div>
+      </article>
+      <article class="exp aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1200&q=85" alt="Marché de Ouidah" />
+        <div class="exp-veil"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 text-bone">
+          <div class="text-[10px] tracking-luxe uppercase text-gold mb-2">Saveurs</div>
+          <h3 class="font-display text-3xl">Marché &amp; cuisine</h3>
+          <p class="text-sm text-bone/75 mt-3 leading-relaxed">Tour du marché central avec la cheffe, puis cours de cuisine béninoise traditionnelle dans nos cuisines.</p>
+        </div>
+      </article>
+      <article class="exp aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1200&q=85" alt="Plage" />
+        <div class="exp-veil"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 text-bone">
+          <div class="text-[10px] tracking-luxe uppercase text-gold mb-2">Atlantique</div>
+          <h3 class="font-display text-3xl">Sortie en pirogue</h3>
+          <p class="text-sm text-bone/75 mt-3 leading-relaxed">Au lever du soleil, embarquez avec les pêcheurs du Mono pour une matinée sur les eaux du delta.</p>
+        </div>
+      </article>
+      <article class="exp aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=1200&q=85" alt="Atelier textile" />
+        <div class="exp-veil"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 text-bone">
+          <div class="text-[10px] tracking-luxe uppercase text-gold mb-2">Artisanat</div>
+          <h3 class="font-display text-3xl">Atelier wax &amp; bogolan</h3>
+          <p class="text-sm text-bone/75 mt-3 leading-relaxed">Demi-journée chez nos artisans textiles, du dessin à la teinture végétale, repartez avec votre étoffe.</p>
+        </div>
+      </article>
+      <article class="exp aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=85" alt="Spa" />
+        <div class="exp-veil"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 text-bone">
+          <div class="text-[10px] tracking-luxe uppercase text-gold mb-2">Bien-être</div>
+          <h3 class="font-display text-3xl">Rituel karité &amp; baobab</h3>
+          <p class="text-sm text-bone/75 mt-3 leading-relaxed">Un soin signature en pavillon de jardin, à base d'huiles ouest-africaines pressées à froid.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="max-w-7xl mx-auto px-6 lg:px-10"><div class="gold-divider"></div></div>
+
+<!-- GALERIE -->
+<section id="galerie" class="relative py-32 md:py-40 bg-sand overflow-hidden">
+  <div class="curtain sand"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 mb-12">
+    <div class="flex items-end justify-between gap-8 flex-wrap">
+      <div>
+        <span class="eyebrow reveal">— Galerie</span>
+        <h2 class="font-display text-4xl md:text-6xl mt-6 tracking-tightest leading-[1.05] reveal-words">
+          <span class="word-mask"><span>Quelques</span></span>
+          <span class="word-mask"><span>fragments</span></span><br />
+          <span class="word-mask"><span class="italic text-terra">de la maison.</span></span>
+        </h2>
+      </div>
+      <div class="flex items-center gap-4 reveal" style="transition-delay:.4s;">
+        <p class="hidden md:block max-w-xs text-coal/65 text-sm">Atmosphères, lumières, gestes — un avant-goût.</p>
+        <button id="showcase-prev" class="showcase-nav" aria-label="Précédent">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button id="showcase-next" class="showcase-nav" aria-label="Suivant">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pl-6 lg:pl-10 reveal">
+    <div id="showcase-track" class="showcase-track">
+      <figure class="showcase-card group"><img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=85" alt="" /><figcaption class="absolute bottom-0 inset-x-0 p-6 text-bone bg-gradient-to-t from-onyx/95 to-transparent"><div class="text-[10px] tracking-luxe uppercase text-gold">Façade</div><div class="font-display text-2xl mt-1">L'arrivée au crépuscule</div></figcaption></figure>
+      <figure class="showcase-card group"><img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=85" alt="" /><figcaption class="absolute bottom-0 inset-x-0 p-6 text-bone bg-gradient-to-t from-onyx/95 to-transparent"><div class="text-[10px] tracking-luxe uppercase text-gold">Patio</div><div class="font-display text-2xl mt-1">Sous les flamboyants</div></figcaption></figure>
+      <figure class="showcase-card group"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85" alt="" /><figcaption class="absolute bottom-0 inset-x-0 p-6 text-bone bg-gradient-to-t from-onyx/95 to-transparent"><div class="text-[10px] tracking-luxe uppercase text-gold">Table</div><div class="font-display text-2xl mt-1">Service du soir</div></figcaption></figure>
+      <figure class="showcase-card group"><img src="https://images.unsplash.com/photo-1551776235-dde6d482980b?auto=format&fit=crop&w=1200&q=85" alt="" /><figcaption class="absolute bottom-0 inset-x-0 p-6 text-bone bg-gradient-to-t from-onyx/95 to-transparent"><div class="text-[10px] tracking-luxe uppercase text-gold">Suite</div><div class="font-display text-2xl mt-1">Lumière du matin</div></figcaption></figure>
+      <figure class="showcase-card group"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=85" alt="" /><figcaption class="absolute bottom-0 inset-x-0 p-6 text-bone bg-gradient-to-t from-onyx/95 to-transparent"><div class="text-[10px] tracking-luxe uppercase text-gold">Plage</div><div class="font-display text-2xl mt-1">L'Atlantique, à dix minutes</div></figcaption></figure>
+      <figure class="showcase-card group"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1200&q=85" alt="" /><figcaption class="absolute bottom-0 inset-x-0 p-6 text-bone bg-gradient-to-t from-onyx/95 to-transparent"><div class="text-[10px] tracking-luxe uppercase text-gold">Marché</div><div class="font-display text-2xl mt-1">Couleurs du Bénin</div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section id="testimonials" class="relative py-32 md:py-44 bg-bone overflow-hidden">
+  <div class="curtain bone"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-20">
+      <span class="eyebrow reveal">— Ils ont séjourné</span>
+      <h2 class="font-display text-4xl md:text-6xl mt-6 tracking-tightest leading-[1.05] reveal-words">
+        <span class="word-mask"><span>Ce</span></span>
+        <span class="word-mask"><span>qu'ils</span></span>
+        <span class="word-mask"><span>en</span></span>
+        <span class="word-mask"><span class="italic text-terra">ont gardé.</span></span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger">
+      <figure class="bg-sand p-10 rounded-3xl relative transition-all duration-700 hover:bg-onyx hover:text-bone hover:-translate-y-1 group">
+        <svg class="absolute top-8 right-8 w-8 h-8 text-gold/60" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7H6c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h2v-1c0-2.2-.5-3.5-1.5-4.5L9 7zm9 0h-3c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h2v-1c0-2.2-.5-3.5-1.5-4.5L18 7z"/></svg>
+        <blockquote class="font-display text-lg md:text-xl leading-relaxed">« Quatre nuits, et l'impression d'être attendus depuis toujours. La cheffe nous a fait découvrir des saveurs que je n'oublierai jamais. »</blockquote>
+        <figcaption class="mt-8 pt-6 border-t border-onyx/10 group-hover:border-bone/20 transition-colors">
+          <div class="font-medium">Hélène &amp; Marc</div>
+          <div class="text-xs tracking-luxe uppercase mt-1 text-coal/50 group-hover:text-gold transition-colors">Voyageurs, Bordeaux</div>
+        </figcaption>
+      </figure>
+      <figure class="bg-sand p-10 rounded-3xl relative transition-all duration-700 hover:bg-onyx hover:text-bone hover:-translate-y-1 group">
+        <svg class="absolute top-8 right-8 w-8 h-8 text-gold/60" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7H6c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h2v-1c0-2.2-.5-3.5-1.5-4.5L9 7zm9 0h-3c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h2v-1c0-2.2-.5-3.5-1.5-4.5L18 7z"/></svg>
+        <blockquote class="font-display text-lg md:text-xl leading-relaxed">« Une étape essentielle de notre voyage à travers l'Afrique de l'Ouest. La visite de la forêt sacrée organisée par la maison reste un sommet. »</blockquote>
+        <figcaption class="mt-8 pt-6 border-t border-onyx/10 group-hover:border-bone/20 transition-colors">
+          <div class="font-medium">Yannick D.</div>
+          <div class="text-xs tracking-luxe uppercase mt-1 text-coal/50 group-hover:text-gold transition-colors">Photographe, Montréal</div>
+        </figcaption>
+      </figure>
+      <figure class="bg-sand p-10 rounded-3xl relative transition-all duration-700 hover:bg-onyx hover:text-bone hover:-translate-y-1 group">
+        <svg class="absolute top-8 right-8 w-8 h-8 text-gold/60" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7H6c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h2v-1c0-2.2-.5-3.5-1.5-4.5L9 7zm9 0h-3c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h2v-1c0-2.2-.5-3.5-1.5-4.5L18 7z"/></svg>
+        <blockquote class="font-display text-lg md:text-xl leading-relaxed">« Discrétion, élégance, hospitalité — le triptyque parfait. Et une table d'un raffinement rare en Afrique de l'Ouest. »</blockquote>
+        <figcaption class="mt-8 pt-6 border-t border-onyx/10 group-hover:border-bone/20 transition-colors">
+          <div class="font-medium">Mme Aïcha S.</div>
+          <div class="text-xs tracking-luxe uppercase mt-1 text-coal/50 group-hover:text-gold transition-colors">Entrepreneure, Cotonou</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="max-w-7xl mx-auto px-6 lg:px-10"><div class="gold-divider"></div></div>
+
+<!-- CONTACT -->
+<section id="contact" class="relative py-32 md:py-44 bg-onyx text-bone overflow-hidden">
+  <div class="curtain dark"></div>
+  <div class="absolute inset-0 opacity-30" style="background:radial-gradient(ellipse at top, rgba(184,149,89,0.18), transparent 60%);"></div>
+  <div class="grain"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+    <div>
+      <span class="eyebrow reveal">— Réservations &amp; renseignements</span>
+      <h2 class="font-display text-5xl md:text-7xl mt-6 leading-[1] tracking-tightest reveal-words">
+        <span class="word-mask"><span>Nous</span></span>
+        <span class="word-mask"><span>écrire,</span></span><br />
+        <span class="word-mask"><span class="italic text-gold">nous appeler.</span></span>
+      </h2>
+      <p class="mt-8 text-lg text-bone/70 leading-relaxed max-w-md reveal" style="transition-delay:.3s;">
+        Notre équipe vous répond personnellement, en français ou en anglais, dans les meilleurs délais. Pour toute demande urgente, le téléphone reste le moyen le plus direct.
+      </p>
+
+      <!-- Big phone CTA -->
+      <a href="tel:+22901000000" class="mt-12 reveal block" style="transition-delay:.4s;">
+        <div class="border border-gold/30 rounded-3xl p-8 hover:bg-gold hover:text-onyx transition-all duration-500 group cursor-pointer">
+          <div class="text-[10px] tracking-luxe uppercase text-gold group-hover:text-onyx mb-3">Téléphone direct</div>
+          <div class="font-display text-3xl md:text-4xl flex items-center gap-4">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+229 01 XX XX XX XX</span>
+          </div>
+          <div class="mt-3 text-sm opacity-70">Lun. — Dim. · 8h — 21h (GMT+1)</div>
+        </div>
+      </a>
+
+      <div class="mt-10 space-y-5 text-bone/85 reveal" style="transition-delay:.55s;">
+        <div class="flex items-center gap-4 group">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full border border-gold/30 group-hover:bg-gold group-hover:text-onyx transition-all duration-500">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="font-light">contact@maisonouidah.bj</span>
+        </div>
+        <div class="flex items-center gap-4 group">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full border border-gold/30 group-hover:bg-gold group-hover:text-onyx transition-all duration-500">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span class="font-light">Quartier Sogbadji · Ouidah · Bénin</span>
+        </div>
+      </div>
+    </div>
+
+    <form id="contact-form" class="space-y-6 reveal" style="transition-delay:.15s;">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Prénom</label>
+          <input class="field" name="firstname" />
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Nom</label>
+          <input class="field" name="lastname" />
+        </div>
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Email</label>
+        <input type="email" class="field" name="email" />
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Téléphone</label>
+        <input type="tel" class="field" name="phone" />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Arrivée</label>
+          <input type="date" class="field" name="checkin" />
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Départ</label>
+          <input type="date" class="field" name="checkout" />
+        </div>
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Type de séjour</label>
+        <select class="field" name="type">
+          <option>Suite Atlantique</option>
+          <option>Chambre Patio</option>
+          <option>Villa Manguier</option>
+          <option>Réservation au restaurant uniquement</option>
+          <option>Privatisation / événement</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-luxe uppercase text-bone/60 mb-3">Quelques mots</label>
+        <textarea rows="4" class="field resize-none" name="message"></textarea>
+      </div>
+      <button type="submit" id="submit-btn" class="btn-gold group">
+        <span id="submit-label">Envoyer ma demande</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-onyx text-bone/60 py-12 border-t border-bone/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div>
+      <div class="font-display text-2xl text-bone">Maison <em class="not-italic text-gold">Ouidah</em></div>
+      <div class="text-xs tracking-luxe uppercase mt-3">Hôtel · Restaurant · depuis 2012</div>
+      <div class="text-xs mt-2 text-bone/40">Quartier Sogbadji, Ouidah, Bénin</div>
+    </div>
+    <ul class="space-y-2 text-xs tracking-luxe uppercase">
+      <li><a href="#hotel" class="hover:text-gold transition">L'hôtel</a></li>
+      <li><a href="#restaurant" class="hover:text-gold transition">La table</a></li>
+      <li><a href="#experiences" class="hover:text-gold transition">Expériences</a></li>
+      <li><a href="#contact" class="hover:text-gold transition">Contact</a></li>
+    </ul>
+    <div class="md:text-right">
+      <a href="tel:+22901000000" class="inline-block font-display text-2xl text-bone hover:text-gold transition">+229 01 XX XX XX XX</a>
+      <div class="text-xs mt-2 text-bone/40">contact@maisonouidah.bj</div>
+      <div class="text-xs mt-6 text-bone/30">© <span id="year"></span> Maison Ouidah · Tous droits réservés</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Nav scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  menuBtn.addEventListener('click', () => {
+    const opened = menu.classList.toggle('open');
+    iconOpen.classList.toggle('hidden', opened);
+    iconClose.classList.toggle('hidden', !opened);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); iconOpen.classList.remove('hidden'); iconClose.classList.add('hidden');
+  }));
+
+  // Hero word reveal
+  document.querySelectorAll('#top .word-mask').forEach((el) => {
+    const delay = parseInt(el.dataset.delay || '0', 10);
+    setTimeout(() => el.classList.add('is-in'), 400 + delay);
+  });
+
+  // Cursor glow
+  const glow = document.getElementById('cursor-glow');
+  if (glow && window.matchMedia('(min-width: 769px)').matches) {
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; glow.style.opacity = '.7'; });
+    window.addEventListener('mouseleave', () => glow.style.opacity = '0');
+    function loop() {
+      cx += (tx - cx) * .15; cy += (ty - cy) * .15;
+      glow.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      requestAnimationFrame(loop);
+    }
+    loop();
+  }
+
+  // Reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('reveal-in', 'in');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('.reveal, .reveal-stagger, .reveal-words, .gold-divider').forEach(el => observer.observe(el));
+
+  // Showcase nav
+  const track = document.getElementById('showcase-track');
+  const prev = document.getElementById('showcase-prev');
+  const next = document.getElementById('showcase-next');
+  function getCardWidth() {
+    const card = track.querySelector('.showcase-card');
+    if (!card) return 380;
+    const style = getComputedStyle(track);
+    return card.getBoundingClientRect().width + parseFloat(style.gap || '24');
+  }
+  function updateNavState() {
+    prev.disabled = track.scrollLeft <= 4;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }
+  prev.addEventListener('click', () => track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left:  getCardWidth(), behavior: 'smooth' }));
+  track.addEventListener('scroll', updateNavState);
+  window.addEventListener('resize', updateNavState);
+  setTimeout(updateNavState, 100);
+
+  // Contact form
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('submit-label').textContent = 'Merci — nous revenons vers vous sous 24 heures.';
+  });
+</script>
+</body>
+</html>
