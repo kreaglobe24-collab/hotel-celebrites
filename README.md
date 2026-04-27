@@ -1,6 +1,6 @@
-# Maison Ouidah — Site
+# Hôtel Célébrités — Site
 
-Maquette de site vitrine pour **Maison Ouidah** — hôtel & restaurant à Ouidah, Bénin.
+Site vitrine de l'**Hôtel Célébrités** — hôtel, restaurant, bar et salles de réception à Agbanou, Ouidah, Bénin. Inauguré en 2022.
 
 ## Aperçu local
 
