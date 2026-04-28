@@ -115,6 +115,12 @@
   nav.scrolled { background: rgba(242,234,219,.85); backdrop-filter: blur(20px); border-bottom:1px solid rgba(22,19,17,.06); }
   nav.scrolled .nav-blend { mix-blend-mode:normal; color:#161311; }
 
+  /* Brand swap: text on dark hero, image logo on scrolled light navbar */
+  #brand-logo { display: none; height: 56px; width: auto; mix-blend-mode: multiply; transition: opacity .4s; }
+  #brand-text { display: inline; }
+  nav.scrolled #brand-text { display: none; }
+  nav.scrolled #brand-logo { display: inline-block; }
+
   .suite { position:relative; overflow:hidden; border-radius:24px; aspect-ratio:5/6; background:#E8DCC4; isolation:isolate; }
   .suite img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.22,1,.36,1); }
   .suite:hover img { transform:scale(1.12); }
@@ -197,7 +203,8 @@
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-700" id="navbar">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
     <a href="#top" class="flex items-center gap-3">
-      <span class="font-display text-3xl tracking-tightest nav-blend">Hôtel <em class="not-italic text-gold">Célébrités</em></span>
+      <span id="brand-text" class="font-display text-3xl tracking-tightest nav-blend">Hôtel <em class="not-italic text-gold">Célébrités</em></span>
+      <img id="brand-logo" src="logo.png" alt="Hôtel Célébrités" />
     </a>
     <nav class="hidden lg:flex items-center gap-10">
       <a href="#hotel" class="text-sm nav-blend hover:!text-gold transition-colors duration-500 relative group">L'hôtel<span class="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full"></span></a>
